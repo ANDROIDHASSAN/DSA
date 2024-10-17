@@ -1,3 +1,10 @@
+🌟 Day 31/101: DSA Challenge 🌟
+
+Tackled the Majority Element problem today! 🧠
+It's a great feeling to implement efficient solutions for array-related challenges. On to the next one! 💪
+
+#101DaysOfDSA #MajorityElement #ProblemSolving #CodingJourney #Day26 #DSAChallenge #KeepLearning
+
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
