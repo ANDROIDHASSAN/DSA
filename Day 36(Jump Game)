@@ -1,1 +1,50 @@
-.
+🌟 Day 36/101: DSA Challenge 🌟
+
+Today, I solved the Jump Game problem! 🏃‍♂️
+Learning how to strategize jumps in an array has been a fun challenge. Excited to tackle more complex problems! 💪
+
+#101DaysOfDSA #JumpGame #ProblemSolving #CodingJourney #Day31 #DSAChallenge #KeepLearning
+
+
+
+
+Question:
+Given an array of non-negative integers, each element represents your maximum jump length at that position. Determine if you can reach the last index starting from the first index.
+
+Logic:
+Use a greedy approach by maintaining a variable (maxReach) to track the farthest index you can reach. If at any point the current index exceeds maxReach, return false. If maxReach reaches or exceeds the last index, return true.
+
+Answer:
+The function returns true if you can reach the last index, otherwise false.
+
+Kuch aur chahiye toh bata!
+
+
+solution : 
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        
+        if (nums.size() == 0) {
+            return true;
+        }
+
+        int maxReach = 0; 
+        int n = nums.size();
+
+        for (int i = 0; i < n; ++i) {
+           
+            if (i > maxReach) {
+                return false;
+            }
+            
+            maxReach = max(maxReach, i + nums[i]);
+            
+            if (maxReach >= n - 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+};
