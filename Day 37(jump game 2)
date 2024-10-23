@@ -1,0 +1,63 @@
+🌟 Day 32/101: DSA Challenge 🌟
+
+Solved Jump Game 2 today! 🏃‍♂️
+Used the greedy algorithm and two pointers approach to minimize jumps—learning new techniques every day! 💪
+
+#101DaysOfDSA #JumpGame2 #GreedyAlgorithm #TwoPointers #ProblemSolving #CodingJourney #Day32 #DSAChallenge #KeepLearning
+
+question :-
+45. Jump Game II MediumTopicsCompanies
+You are given a 0-indexed array of integers nums of length n. You are initially positioned at nums[0].
+Each element nums[i] represents the maximum length of a forward jump from index i. In other words, if you are at nums[i], you can jump to any nums[i + j] where:
+• 0 <= j <= nums[i] and
+• i + j < n
+Return the minimum number of jumps to reach nums[n - 1]. The test cases are generated such that you can reach nums[n - 1].
+ 
+Example 1:
+
+Input: nums = [2,3,1,1,4]
+Output: 2
+Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
+
+Example 2:
+
+Input: nums = [2,3,0,1,4]
+Output: 2
+
+ 
+Constraints:
+• 1 <= nums.length <= 104
+• 0 <= nums[i] <= 1000
+• It's guaranteed that you can reach nums[n - 1].
+
+code :- 
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        int res = 0;
+        int l = 0;
+        int r = 0;
+        while(r<nums.size()-1)
+        {
+            int farthest = 0;
+            for(int i = l;i<=r;i++)
+            {
+                farthest= max(farthest,i+nums[i]);
+            }
+            l=r+1;
+            r=farthest;
+            res++;
+        }
+        return res;
+    }
+};
+
+
+logic - 
+Objective: Tumhe minimum jumps mein array ke first position se last position tak pahuchna hai.
+Approach:
+Har step pe, current range ke andar jitna door tak ja sakte ho, usko check karo.
+Us range mein sabse door kaunsa point hai, usko apna next destination banao.
+Jab tak current range cover nahi hoti, explore karte jao.
+Har baar jab range change hoti hai, ek jump count karo.
+Yeh process tab tak repeat karo jab tak last position tak nahi pahuch jaate.
