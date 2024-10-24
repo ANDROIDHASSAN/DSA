@@ -1,1 +1,64 @@
-.
+🌟 Day 38/101: DSA Challenge 🌟
+
+Today, I tackled the H-Index problem! 📊
+Understanding how to measure research impact through this metric was insightful. Onward to more challenges! 💪
+
+#101DaysOfDSA #HIndex #ProblemSolving #CodingJourney #Day33 #DSAChallenge #KeepLearning
+
+Question :
+274. H-Index SolvedMediumTopicsCompaniesHint
+Given an array of integers citations where citations[i] is the number of citations a researcher received for their ith paper, return the researcher's h-index.
+According to the definition of h-index on Wikipedia: The h-index is defined as the maximum value of h such that the given researcher has published at least h papers that have each been cited at least h times.
+ 
+Example 1:
+
+Input: citations = [3,0,6,1,5]
+Output: 3
+Explanation: [3,0,6,1,5] means the researcher has 5 papers in total and each of them had received 3, 0, 6, 1, 5 citations respectively.
+Since the researcher has 3 papers with at least 3 citations each and the remaining two with no more than 3 citations each, their h-index is 3.
+
+Example 2:
+
+Input: citations = [1,3,1]
+Output: 1
+
+ 
+Constraints:
+• n == citations.length
+• 1 <= n <= 5000
+• 0 <= citations[i] <= 1000
+
+logic :
+
+Jab tak jo citations he vo given citations ki size se jyada he tab tab h++ kardo or usko return kardo                                                                                     Acha, bhai! Ye code 'h-index' ko calculate kar raha hai, jo kisi researcher ke papers ke citations ka measure hota hai. 'h-index' ka matlab hota hai ki researcher ke at least 'h' papers hain, jinko kam se kam 'h' citations mile hain.
+Yeh raha logic step-by-step:
+1. Sorting: Pehle tum citations array ko descending order mein sort kar rahe ho (reverse order mein). Yeh is liye ki tum easily check kar sako ki kitne papers ke citations us 'h' value se zyada hain. rbegin() ka matlab reverse begin hai, jo array ko reverse order mein sort karega.
+2. Loop aur Condition: Phir tum h ko 0 se shuru karke har paper ke citations ko check kar rahe ho. Jab tak h ka value array ke size se chhota hai aur current citation value h se badi hai, tab tak tum h ko badha rahe ho.
+3. Stopping Condition: Jab tumhara current paper ke citations ka value h ke barabar ya usse kam ho jaye, tab loop rukta hai.
+4. Return: Tumhara h-index h ke barabar ho jata hai. Kyunki 'h' wo maximum value hai jahan tak papers ke citations us number se zyada hain.
+Example:
+Agar citations array [6, 5, 3, 1, 0] hai:
+• Tum descending order mein sort karoge, to same array milega [6, 5, 3, 1, 0].
+• Phir tum check karte ho:
+    ◦ First paper: 6 citations, h = 1.
+    ◦ Second paper: 5 citations, h = 2.
+    ◦ Third paper: 3 citations, h = 3.
+    ◦ Fourth paper: 1 citation, yahan h = 4 nahi ho sakta kyunki 1 < 4.
+    ◦ Loop yahin ruk jaata hai aur h return ho jata hai.
+Output h-index ho jaayega 3.
+
+
+Solution:
+
+class Solution {
+public:
+int hIndex(vector<int>& citations) {
+sort(citations.rbegin(),citations.rend());
+int h = 0;
+while(h<citations.size() && citations[h]>h)
+{
+h++;
+}
+return h;
+}
+};
